@@ -109,7 +109,7 @@
                                     <div class="single-what-news mb-100">
                                         <div class="what-img">
                                         <img
-                                            src="assets/img/news/whatNews1.jpg"
+                                            :src="'http://localhost:8000' + post.image"
                                             alt=""
                                         />
                                         </div>
