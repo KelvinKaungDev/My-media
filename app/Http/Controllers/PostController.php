@@ -49,14 +49,16 @@ class PostController extends Controller
 
     public function update(PostUpdateRequest $request, $id)
     {
-        
+
     }
 
     public function destroy($id)
     {
-        PostService::delete($id);
-
-        return back() -> with('message_delete_success', 'Deleted Successfully');
+        if(PostService::delete($id)) {
+            return back() -> with('message_delete_success', 'Deleted Successfully');
+        } else {
+            return back() -> with('message_delete_fail', 'Deleted Fail');
+        }
     }
 }
 

@@ -3,17 +3,19 @@
 namespace App\Providers\Services;
 
 use App\Models\post;
-use App\Providers\Repositories\PostRepository;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use App\Providers\Repositories\PostRepository;
 
 class PostService {
 
     public static function create($request) {
         $data = $request['image'];
         if($data) {
-            $file     = $data;
-            $fileName = uniqid() . '_' . $file -> getClientOriginalName();
-            $file -> move(public_path().'/postUpload/', $fileName);
+            $name = 'design_' . time() . '_' . $data -> getClientOriginalName();
+            Storage::disk('public') -> putFileAs("/uploads/posts", $data, $name);
+
+            $fileName = Storage::url("uploads/posts/{$name}");
         }
         else {
             $fileName = 'https://via.placeholder.com/200x200?text=Image+Not+Available';
@@ -26,9 +28,8 @@ class PostService {
 
     public static function delete($id) {
         $image = PostRepository::getById($id) -> image;
-
-        if(File::exists(public_path().'/postUpload/'.$image)) {
-            File::delete(public_path().'/postUpload/'.$image);
+        if(File::exists(public_path($image))) {
+            File::delete(public_path($image));
             post::find($id) -> delete();
         }
     }

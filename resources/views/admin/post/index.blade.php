@@ -73,6 +73,15 @@
                             </button>
                         </div>
                     @endif
+
+                    @if (Session::has('message_delete_fail'))
+                        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                            {{ Session::get('message_delete_fail') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true" class="text-white">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="card mt-5">
                         <div class="card-header">
                             <h1 class="card-title text-bold">
@@ -113,7 +122,7 @@
                                             <td>{{ ++$index }}</td>
                                             <td>{{ $post -> title }}</td>
                                             <td>
-                                                <img src="{{ asset('postUpload/'. $post -> image) }}" width="50px">
+                                                <img src="{{ $post -> image }}" width="50px">
                                             </td>
                                             <td >
                                                 <form method="post" action="{{ route('post.destroy', $post -> id) }}" id="deletePost">
