@@ -86,6 +86,15 @@
                                             >
                                                 Technology
                                             </a>
+
+                                            <div class="row mt-2">
+                                                <div class="search-box ml-100">
+                                                    <form action="details.html">
+                                                        <input type="text" placeholder="Search" v-model="getPostTitle" v-on:keyup.enter="searchPost()"/>
+                                                        <i class="fas fa-search special-tag ml-15 pointer" @click="searchPost()"></i>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </nav>
                                 </div>
