@@ -5,11 +5,18 @@ namespace App\Providers\Repositories;
 use App\Models\post;
 
 class PostRepository {
-    public static function getAll() {
+    public static function getAll()
+    {
         return post:: orderBy('id', 'DESC') -> get();
     }
 
-    public static function getById($id) {
+    public static function getById($id)
+    {
         return post::whereId($id) -> firstOrFail();
+    }
+
+    public static function searchByName($key)
+    {
+        return post::where('title','like', '%'. $key . '%') -> get();
     }
 }

@@ -25,3 +25,5 @@ Route::get('posts', [ApiPostController::class, 'index']);
 Route::get('get-user-list', function() {
     return response() -> json('This is user list');
 });
+
+Route::post('post/search', [ApiPostController::class], 'search');
