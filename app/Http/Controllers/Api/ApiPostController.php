@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\post;
-use App\Providers\Repositories\PostRepository;
+use App\Repositories\PostRepository;
 
 class ApiPostController extends Controller
 {
@@ -21,7 +21,7 @@ class ApiPostController extends Controller
 
     public function create()
     {
-        //
+
     }
 
     public function store(Request $request)
@@ -31,16 +31,29 @@ class ApiPostController extends Controller
 
     public function search(Request $request)
     {
-        $posts = post::where('title','like', '%'. $request -> key . '%') -> get();
+        $results = PostRepository::searchByName($request -> key);
 
         return response() -> json([
-            'post' => $posts
+            'result' => $results
         ]);
     }
 
-    public function show($id)
+    public function searchByCategory(Request $request)
     {
-        //
+        $results = PostRepository::searchByCategoryId($request -> key);
+
+        return response() -> json([
+            'result' => $results
+        ]);
+    }
+
+    public function showPostDetail(Request $request)
+    {
+        $post = PostRepository::getById($request -> key);
+
+        return response() -> json([
+            'result' => $post
+        ]);
     }
 
     public function edit($id)

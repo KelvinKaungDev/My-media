@@ -1,6 +1,6 @@
-<?
+<?php
 
-namespace App\Providers\Services;
+namespace App\Services;
 
 use App\Models\post;
 use Illuminate\Support\Facades\File;

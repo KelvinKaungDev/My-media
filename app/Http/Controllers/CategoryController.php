@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
-use App\Providers\Repositories\CategoryRepository;
-use App\Providers\Services\CategoryService;
+use App\Repositories\CategoryRepository;
+use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

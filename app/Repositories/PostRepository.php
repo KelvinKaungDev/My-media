@@ -1,10 +1,11 @@
-<?
+<?php
 
-namespace App\Providers\Repositories;
+namespace App\Repositories;
 
 use App\Models\post;
 
 class PostRepository {
+
     public static function getAll()
     {
         return post:: orderBy('id', 'DESC') -> get();
@@ -17,6 +18,12 @@ class PostRepository {
 
     public static function searchByName($key)
     {
-        return post::where('title','like', '%'. $key . '%') -> get();
+        return post::where('title', 'LIKE', '%' . $key . '%') -> get();
     }
+
+    public static function searchByCategoryId($key)
+    {
+        return post::where('category_id', $key) -> get();
+    }
+
 }

@@ -6,10 +6,11 @@ use App\Models\post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\PostUpdateRequest;
+use App\Repositories\CategoryRepository;
+use App\Repositories\PostRepository;
+use App\Services\PostService;
 use Illuminate\Support\Facades\File;
-use App\Providers\Services\PostService;
-use App\Providers\Repositories\PostRepository;
-use App\Providers\Repositories\CategoryRepository;
+
 
 class PostController extends Controller
 {

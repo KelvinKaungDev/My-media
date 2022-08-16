@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../my-media-client"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}

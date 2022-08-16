@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class action_logs extends Model
 {
+    protected $fillable = [
+        'user_id',
+        'post_id',
+    ];
     use HasFactory;
 }

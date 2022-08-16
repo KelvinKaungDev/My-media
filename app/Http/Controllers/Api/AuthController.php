@@ -8,6 +8,8 @@ use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\Repositories\UserRepository;
 use App\Providers\Services\UserService;
+use App\Repositories\LoginRepository;
+use App\Services\UserService as ServicesUserService;
 
 class AuthController extends Controller
 {
@@ -24,24 +26,16 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        UserService::create($request -> validated());
+        ServicesUserService::create($request -> validated());
     }
 
     public function login(Request $request)
     {
-        $user = UserRepository::getUserById($request -> id);
+        $userToken = LoginRepository::create($request);
 
-        if(Hash::check($request -> password, $user -> password)) {
-            return response() -> json([
-                'user'  => $user -> email,
-                'token' => $user -> createToken(time()) -> plainTextToken
-            ]);
-        } else {
-            return response() -> json([
-                'user'  => null,
-                'token' => null
-            ]);
-        }
+        return response() -> json([
+            'result' => $userToken
+        ]);
     }
 
     public function show($id)

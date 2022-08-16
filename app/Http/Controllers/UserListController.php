@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Providers\Repositories\UserRepository;
-use App\Providers\Services\UserService;
+use App\Repositories\UserRepository;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UserListController extends Controller

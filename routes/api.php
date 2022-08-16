@@ -1,24 +1,13 @@
 <?php
 
+use App\Http\Controllers\Api\ApiActionLogController;
+use App\Http\Controllers\Api\ApiLoginController;
 use App\Http\Controllers\Api\ApiPostController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\ApiCategoryController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 Route::post('login', [AuthController::class, 'login']);
-
-Route::post('register', [AuthController::class, 'register']);
 
 Route::get('posts', [ApiPostController::class, 'index']);
 
@@ -26,4 +15,15 @@ Route::get('get-user-list', function() {
     return response() -> json('This is user list');
 });
 
-Route::post('post/search', [ApiPostController::class], 'search');
+Route::post('posts/search', [ApiPostController::class, 'search']);
+
+Route::get('category', [ApiCategoryController::class, 'index']);
+
+Route::post('posts/searchByCategory', [ApiPostController::class, 'searchByCategory']);
+
+Route::post('post/detail', [ApiPostController::class, 'showPostDetail']);
+
+Route::get('post/detail', [ApiPostController::class, 'showPostDetail']);
+
+Route::post('action-log', [ApiActionLogController::class, 'store']);
+

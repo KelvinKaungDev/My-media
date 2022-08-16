@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use App\Providers\Repositories\UserRepository;
-use App\Providers\Services\UserService;
+use App\Repositories\UserRepository;
+use App\Services\UserService;
+use Illuminate\Cache\Repository;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
