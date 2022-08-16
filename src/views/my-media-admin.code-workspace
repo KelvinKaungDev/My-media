@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../my-media-admin"
+		},
+		{
+			"path": "../../../../code/fashiongeeks"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
